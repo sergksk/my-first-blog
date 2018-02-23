@@ -3,6 +3,8 @@
 __pycache__
 myenv
 .vscode
+.pydevproject
+.project
 mysite/mysite/settings.py
 db.sqlite3
 /static
