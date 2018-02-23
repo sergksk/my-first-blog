@@ -2,6 +2,7 @@
 *~
 __pycache__
 myenv
+.vscode
 mysite/mysite/settings.py
 db.sqlite3
 /static
