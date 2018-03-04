@@ -1,7 +1,8 @@
 *.pyc
 *~
 __pycache__
-myenv
+myvenv
+.gitignore
 .vscode
 .pydevproject
 .project
