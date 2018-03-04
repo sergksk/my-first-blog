@@ -6,9 +6,9 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name="Автор")
     title = models.CharField("Заголовок", max_length=200)
     text = models.TextField("Содержание")
-    created_date = models.DateTimeField("Дата создания",
-            default=timezone.now)
+    created_date = models.DateTimeField("Дата создания", default=timezone.now)
     published_date = models.DateTimeField("Дата публикации", blank=True, null=True)
+    count_comments = models.IntegerField(default=0)
     
     class Meta:
         verbose_name = 'Пост'
@@ -35,6 +35,8 @@ class Comment(models.Model):
     def approve(self):
          self.approved_comment = True
          self.save()
+         self.post.count_comments += 1
+         self.post.save()
 
          
     def approved_comments(self):
