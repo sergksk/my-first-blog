@@ -9,8 +9,12 @@
 				{{ post.published_date }}
 			</div>
 			<h1><a	href="{% url 'post_detail' pk=post.pk %}">{{ post.title	}}</a></h1>
-			<p>{{	post.text|linebreaksbr	}}</p>
-			<a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.count_comments }}</a>
+			<p>{{ post.text|linebreaksbr }}</p>
+			{% if user.is_authenticated %}
+        	     <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.count_comments }} из {{ post.comments.count }}</a>
+			{% else %}
+			     <a href="{% url 'post_detail' pk=post.pk %}">Комментарии: {{ post.count_comments }}</a> 
+			{% endif %}	  
 		</div>
 	{% endfor %}
   {% endblock %}
