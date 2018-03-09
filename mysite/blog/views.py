@@ -12,7 +12,7 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post' : post})
 @login_required
 def post_new(request):
-    action = "Добавление записи"
+    action = "Добавление поста"
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -25,7 +25,7 @@ def post_new(request):
     return render(request, 'blog/form_edit.html', {'form': form, 'action': action})
 @login_required
 def post_edit(request, pk):
-    action = "Изменение записи"
+    action = "Изменение поста"
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
@@ -52,7 +52,7 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 def add_comment_to_post(request, pk):
-    action="Добавление записи"
+    action="Добавление комментария"
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)

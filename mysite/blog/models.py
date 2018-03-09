@@ -37,7 +37,6 @@ class Comment(models.Model):
          self.save()
          self.post.count_comments += 1
          self.post.save()
-
          
     def approved_comments(self):
          return self.comments.filter(approved_comment=True)
